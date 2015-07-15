@@ -5,6 +5,7 @@ import japgolly.scalajs.react.extra.router2.RouterCtl
 import japgolly.scalajs.react.vdom.prefix_<^._
 import spatutorial.client.SPAMain.{TodoLoc, Loc}
 import spatutorial.client.components._
+import com.payalabs.scalajs.react.bridge._
 
 object Dashboard {
   // create the React component for Dashboard
@@ -18,7 +19,8 @@ object Dashboard {
       Motd(),
       Chart(cp),
       // create a link to the Todo view
-      <.div(ctl.link(TodoLoc)("Check your todos!"))
+      <.div(ctl.link(TodoLoc)("Check your todos!")),
+      TagsInput(defaultValue = Seq("a", "b", "c"))()
     )
   }).build
 }

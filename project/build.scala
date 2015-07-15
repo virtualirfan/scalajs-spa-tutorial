@@ -39,7 +39,7 @@ object Settings {
     val scala = "2.11.6"
     val scalajsReact = "0.9.0"
     val scalaCSS = "0.2.0"
-    val react = "0.12.1"
+    val react = "0.13.3"
     val jQuery = "1.11.1"
     val bootstrap = "3.3.2"
     val chartjs = "1.0.1"
@@ -72,6 +72,7 @@ object Settings {
     "com.github.japgolly.scalajs-react" %%% "core" % versions.scalajsReact,
     "com.github.japgolly.scalajs-react" %%% "extra" % versions.scalajsReact,
     "com.github.japgolly.scalacss" %%% "ext-react" % versions.scalaCSS,
+    "com.payalabs" %%% "scalajs-react-bridge" % "0.1.1-SNAPSHOT",
     "org.scala-js" %%% "scalajs-dom" % "0.8.0",
     "com.lihaoyi" %%% "scalarx" % "0.2.8"
   ))
@@ -79,6 +80,7 @@ object Settings {
   /** Dependencies for external JS libs that are bundled into a single .js file according to dependency order */
   val jsDependencies = Def.setting(Seq(
     "org.webjars" % "react" % versions.react / "react-with-addons.js" commonJSName "React",
+    "org.webjars.npm" % "react-tagsinput" % "1.3.9" / "react-tagsinput.js" dependsOn "react-with-addons.js",
     "org.webjars" % "jquery" % versions.jQuery / "jquery.js",
     "org.webjars" % "bootstrap" % versions.bootstrap / "bootstrap.js" dependsOn "jquery.js",
     "org.webjars" % "chartjs" % versions.chartjs / "Chart.js",
@@ -87,6 +89,7 @@ object Settings {
   /** Same dependecies, but for production build, using minified versions */
   val jsDependenciesProduction = Def.setting(Seq(
     "org.webjars" % "react" % versions.react / "react-with-addons.min.js" commonJSName "React",
+    "org.webjars.npm" % "react-tagsinput" % "1.3.9" / "react-tagsinput.js" dependsOn "react-with-addons.min.js",
     "org.webjars" % "jquery" % versions.jQuery / "jquery.min.js",
     "org.webjars" % "bootstrap" % versions.bootstrap / "bootstrap.min.js" dependsOn "jquery.min.js",
     "org.webjars" % "chartjs" % versions.chartjs / "Chart.min.js",
